@@ -11,6 +11,64 @@ tags:
   - name: health
     description: Health operations
 paths:
+  /finance/status:
+    get:
+      operationId: getFinanceStatus
+      tags: [finance]
+      responses:
+        "200":
+          description: Configuração pública, sem dados financeiros
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinanceStatus"
+  /finance/snapshot:
+    get:
+      operationId: getFinanceSnapshot
+      tags: [finance]
+      responses:
+        "200":
+          description: Última sincronização do proprietário
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinanceSnapshot"
+  /finance/sync:
+    post:
+      operationId: syncFinance
+      tags: [finance]
+      responses:
+        "200":
+          description: Dados sincronizados
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinanceSnapshot"
+  /finance/chat:
+    post:
+      operationId: askFinanceAgent
+      tags: [finance]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AgentQuestion"
+      responses:
+        "200":
+          description: Resposta real do modelo, sem execução de ações
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [answer, model, generatedAt]
+                properties:
+                  answer:
+                    type: string
+                  model:
+                    type: string
+                  generatedAt:
+                    type: string
   /healthz:
     get:
       operationId: healthCheck
@@ -26,6 +84,122 @@ paths:
                 $ref: "#/components/schemas/HealthStatus"
 components:
   schemas:
+    AgentQuestion:
+      type: object
+      required: [message, consent, context]
+      properties:
+        message:
+          type: string
+          maxLength: 4000
+        consent:
+          type: boolean
+        context:
+          type: string
+          description: JSON dos dados locais que o usuário autorizou enviar
+          maxLength: 40000
+    FinanceStatus:
+      type: object
+      required: [service, ownerConfigured, pluggyConfigured, oauthConfigured, modelConfigured, lastSyncAt]
+      properties:
+        service:
+          type: string
+        ownerConfigured:
+          type: boolean
+        pluggyConfigured:
+          type: boolean
+        oauthConfigured:
+          type: boolean
+        modelConfigured:
+          type: boolean
+        lastSyncAt:
+          type: [string, "null"]
+    FinanceSnapshot:
+      type: object
+      required: [accounts, transactions, investments, lastSyncAt, warnings]
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: "#/components/schemas/FinanceAccount"
+        transactions:
+          type: array
+          items:
+            $ref: "#/components/schemas/FinanceTransaction"
+        investments:
+          type: array
+          items:
+            $ref: "#/components/schemas/FinanceInvestment"
+        lastSyncAt:
+          type: [string, "null"]
+        warnings:
+          type: array
+          items:
+            type: string
+    FinanceAccount:
+      type: object
+      required: [id, name, type, balance, currency, institution]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum: [BANK, CREDIT]
+        balance:
+          type: number
+        currency:
+          type: string
+        institution:
+          type: string
+        creditLimit:
+          type: [number, "null"]
+        dueDate:
+          type: [string, "null"]
+    FinanceTransaction:
+      type: object
+      required: [id, accountId, description, amount, date, category, kind, currency]
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        description:
+          type: string
+        amount:
+          type: number
+          description: Magnitude positiva, em reais ou na moeda da conta
+        date:
+          type: string
+        category:
+          type: string
+        kind:
+          type: string
+          enum: [income, expense, transfer, card_payment]
+        currency:
+          type: string
+        installmentNumber:
+          type: [integer, "null"]
+        installmentTotal:
+          type: [integer, "null"]
+        pending:
+          type: boolean
+    FinanceInvestment:
+      type: object
+      required: [id, name, type, balance, currency, institution]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        balance:
+          type: number
+        currency:
+          type: string
+        institution:
+          type: string
     HealthStatus:
       type: object
       properties:

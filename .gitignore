@@ -53,3 +53,11 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+# Private runtime state must never enter Git.
+**/.private/
+/generated-artifacts/
+**/chatgpt-credentials.json
+**/oauth-session.json
+.env
+.env.*
+!.env.example

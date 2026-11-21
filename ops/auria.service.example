@@ -1,0 +1,24 @@
+# MODELO: ajuste caminhos e crie o usuário auria antes de instalar.
+[Unit]
+Description=Auria private finance API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=auria
+Group=auria
+WorkingDirectory=/opt/auria/artifacts/api-server
+EnvironmentFile=/etc/auria/auria.env
+ExecStart=/usr/bin/node --enable-source-maps dist/index.mjs
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/auria
+
+[Install]
+WantedBy=multi-user.target

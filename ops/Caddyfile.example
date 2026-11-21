@@ -1,0 +1,9 @@
+# MODELO: substitua pelo domínio real da sua VPS.
+financas.seudominio.example {
+  handle /api/* {
+    reverse_proxy 127.0.0.1:5000
+  }
+  handle {
+    respond "Auria: servico privado. Acesse pelo app." 200
+  }
+}
