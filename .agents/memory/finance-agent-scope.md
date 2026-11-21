@@ -13,7 +13,9 @@ O usuário já possui uma VPS e hospedará o serviço nela; o acesso será pelo 
 
 As prioridades são gastos, cartões e assinaturas; orçamento, metas e previsões; investimentos e patrimônio. A autonomia escolhida é também organizar e criar alertas, não executar movimentações financeiras.
 
-A direção visual escolhida pelo usuário é “Escuro e tecnológico”, na opção apresentada com fundo azul-preto e destaque verde-lima. O nome “Áuria” foi proposto pelo agente e ainda não foi aprovado pelo usuário.
+A direção visual escolhida pelo usuário é “Escuro e tecnológico”, com fundo azul-preto e destaque verde-lima. O usuário aprovou explicitamente o visual aplicado na prévia; preservar essa direção em futuras telas. O nome “Áuria” foi proposto pelo agente e ainda não foi aprovado pelo usuário.
+
+**Why da direção visual:** o usuário escolheu essa opção e depois confirmou “Aprovar esse visual”.
 
 **Why:** escolhas expressas pelo usuário durante a definição do produto.
 
