@@ -13,6 +13,8 @@ O usuário já possui uma VPS e hospedará o serviço nela; o acesso será pelo 
 
 As prioridades são gastos, cartões e assinaturas; orçamento, metas e previsões; investimentos e patrimônio. A autonomia escolhida é também organizar e criar alertas, não executar movimentações financeiras.
 
+A direção visual escolhida pelo usuário é “Escuro e tecnológico”, na opção apresentada com fundo azul-preto e destaque verde-lima. O nome “Áuria” foi proposto pelo agente e ainda não foi aprovado pelo usuário.
+
 **Why:** escolhas expressas pelo usuário durante a definição do produto.
 
 **How to apply:** manter esse escopo ao propor e construir a primeira versão. Ainda é necessário validar a compatibilidade da hospedagem remota pretendida com o uso oficial da assinatura ChatGPT; não substituir a integração de IA sem combinar com o usuário.
