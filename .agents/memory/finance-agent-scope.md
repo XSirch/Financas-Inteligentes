@@ -9,7 +9,7 @@ Manter a assinatura ChatGPT e validar OAuth é requisito explícito; o usuário 
 
 O usuário aceita que o código seja aberto, mantendo seus dados privados, e pode usar um computador na configuração inicial. Essas escolhas foram feitas para explorar o caminho documentado de OAuth em servidor próprio remoto, ainda não validado na prática com sua conta.
 
-O usuário já possui uma VPS e hospedará o serviço nela; o acesso será pelo app no celular.
+O usuário já possui uma VPS com Ubuntu e hospedará o serviço nela; o acesso será pelo app no celular. Confirmou que o domínio escolhido está livre para este app.
 
 As prioridades são gastos, cartões e assinaturas; orçamento, metas e previsões; investimentos e patrimônio. A autonomia escolhida é também organizar e criar alertas, não executar movimentações financeiras.
 
