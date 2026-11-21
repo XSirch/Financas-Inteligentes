@@ -7,6 +7,8 @@ O usuário quer um app móvel Android de finanças para uso apenas dele, usando 
 
 Manter a assinatura ChatGPT e validar OAuth é requisito explícito; o usuário não autorizou substituição por uma API com cobrança separada.
 
+O usuário aceita que o código seja aberto, mantendo seus dados privados, e pode usar um computador na configuração inicial. Essas escolhas foram feitas para explorar o caminho documentado de OAuth em servidor próprio remoto, ainda não validado na prática com sua conta.
+
 As prioridades são gastos, cartões e assinaturas; orçamento, metas e previsões; investimentos e patrimônio. A autonomia escolhida é também organizar e criar alertas, não executar movimentações financeiras.
 
 **Why:** escolhas expressas pelo usuário durante a definição do produto.
