@@ -1,0 +1,1 @@
+- [Escopo do agente financeiro](finance-agent-scope.md) — App pessoal; assinatura ChatGPT própria, MeuPluggy, organização e alertas sem movimentação financeira.
