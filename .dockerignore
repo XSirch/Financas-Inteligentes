@@ -1,0 +1,37 @@
+# Only the backend build inputs may enter the Docker build context.
+**
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+!tsconfig.base.json
+!Dockerfile
+!artifacts/
+!artifacts/api-server/
+!artifacts/api-server/package.json
+!artifacts/api-server/build.mjs
+!artifacts/api-server/tsconfig.json
+!artifacts/api-server/src/
+!artifacts/api-server/src/**
+!lib/
+!lib/api-zod/
+!lib/api-zod/package.json
+!lib/api-zod/tsconfig.json
+!lib/api-zod/src/
+!lib/api-zod/src/**
+!lib/db/
+!lib/db/package.json
+!lib/db/tsconfig.json
+!lib/db/src/
+!lib/db/src/**
+!ops/
+!ops/container-entrypoint.sh
+# Defense in depth: never send credentials, private state, or dependencies.
+**/.env
+**/.env.*
+**/.private
+**/.private/**
+**/oauth-session.json
+**/chatgpt-credentials.json
+**/host.json
+**/node_modules
+**/node_modules/**

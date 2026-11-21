@@ -1,0 +1,48 @@
+# Easypanel: Git source, Build Path "/", Docker Compose File "compose.yaml".
+# Set environment values in Easypanel and enable "Create .env file".
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    init: true
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      NODE_ENV: production
+      PORT: "5000"
+      FINANCE_DATA_DIR: /var/lib/auria/data
+      CODEX_OAUTH_FILE: /var/lib/auria/oauth/oauth-session.json
+      CLERK_SECRET_KEY: ${CLERK_SECRET_KEY:?Configure CLERK_SECRET_KEY no Easypanel}
+      CLERK_PUBLISHABLE_KEY: ${CLERK_PUBLISHABLE_KEY:?Configure CLERK_PUBLISHABLE_KEY no Easypanel}
+      OWNER_CLERK_USER_ID: ${OWNER_CLERK_USER_ID:?Configure OWNER_CLERK_USER_ID no Easypanel}
+      CODEX_MODEL: ${CODEX_MODEL:-}
+      PLUGGY_CLIENT_ID: ${PLUGGY_CLIENT_ID:-}
+      PLUGGY_CLIENT_SECRET: ${PLUGGY_CLIENT_SECRET:-}
+      PLUGGY_ITEM_IDS: ${PLUGGY_ITEM_IDS:-}
+      PLUGGY_SYNC_INTERVAL_HOURS: ${PLUGGY_SYNC_INTERVAL_HOURS:-}
+      CORS_ORIGINS: ${CORS_ORIGINS:-https://chat.sirch.online}
+    expose:
+      - "5000"
+    volumes:
+      - finance-private:/var/lib/auria
+    tmpfs:
+      - /tmp:mode=1777,size=32m
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:5000/api/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+    stop_grace_period: 30s
+
+volumes:
+  finance-private:

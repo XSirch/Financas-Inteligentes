@@ -1,5 +1,9 @@
 # Áuria na sua VPS
 
+**Instalação escolhida: Easypanel no Ubuntu.** Use primeiro
+[o guia de Docker Compose](EASYPANEL.md). Os modelos de systemd/Caddy abaixo
+são alternativas para Linux sem Easypanel; não os instale por cima do proxy do painel.
+
 ## Estado real desta primeira versão
 
 O aplicativo Android tem um modo manual local e uma conexão com o serviço privado.
