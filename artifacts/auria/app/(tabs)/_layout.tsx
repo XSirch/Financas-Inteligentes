@@ -50,7 +50,7 @@ function ClassicTabLayout() {
         },
         tabBarBackground: () =>
           isIOS ? (
-            <BlurView intensity={90} tint="light" style={StyleSheet.absoluteFill} />
+            <BlurView intensity={90} tint="dark" style={StyleSheet.absoluteFill} />
           ) : (
             <View style={[StyleSheet.absoluteFill, { backgroundColor: c.card }]} />
           ),
@@ -64,8 +64,8 @@ function ClassicTabLayout() {
             title: t.title,
             tabBarIcon: ({ color, focused }) => (
               <View style={{ alignItems: 'center' }}>
-                <Feather name={t.icon} size={21} color={color} />
-                <View style={{ width: 4, height: 4, borderRadius: 2, marginTop: 3, backgroundColor: focused ? c.aura : 'transparent' }} />
+                <Feather name={t.icon} size={21} color={color as string} />
+                <View style={{ width: 4, height: 4, borderRadius: 2, marginTop: 3, backgroundColor: focused ? c.primary : 'transparent' }} />
               </View>
             ),
           }}

@@ -1,53 +1,58 @@
 /**
- * Áuria palette — "linen at dawn".
- * Warm linen surfaces, a deep lagoon ink for calm authority,
- * and an apricot aura used sparingly for moments that matter.
+ * Palette — "Escuro e tecnológico" (chosen by the user).
+ * Blue-black surfaces, a single deliberate lime signal, and distinct
+ * semantic hues for income / expense / warning / error.
+ * The app enforces this dark palette regardless of device theme;
+ * `light` and `dark` keys point at the same tokens for compatibility.
  */
+const dark = {
+  text: '#E6ECF2',
+  tint: '#A7EF64',
+
+  background: '#10151D',
+  foreground: '#E6ECF2',
+
+  card: '#1D2938',
+  cardForeground: '#E6ECF2',
+
+  primary: '#A7EF64',
+  primaryForeground: '#10151D',
+
+  secondary: '#263547',
+  secondaryForeground: '#E6ECF2',
+
+  muted: '#16202B',
+  mutedForeground: '#93A3B6',
+
+  accent: '#24331C',
+  accentForeground: '#C3F598',
+
+  destructive: '#FF6E6E',
+  destructiveForeground: '#10151D',
+
+  border: '#2A394B',
+  input: '#34475D',
+
+  // Domain tokens
+  income: '#5CD6B0',
+  incomeSoft: '#14332F',
+  expense: '#FF9373',
+  expenseSoft: '#3A2228',
+  warning: '#F2C55C',
+  warningSoft: '#3A311C',
+  aura: '#A7EF64',
+  auraSoft: '#22311D',
+  lagoonSoft: '#1A2A3A',
+  hero: '#161F2B',
+  heroForeground: '#F1F5F9',
+  heroMuted: '#8FA1B6',
+  overlay: 'rgba(167,239,100,0.06)',
+};
+
 const colors = {
-  light: {
-    text: '#1F2A2E',
-    tint: '#1F5C5A',
-
-    background: '#F3EEE6',
-    foreground: '#1F2A2E',
-
-    card: '#FBF8F3',
-    cardForeground: '#1F2A2E',
-
-    primary: '#1F5C5A',
-    primaryForeground: '#F7F3EC',
-
-    secondary: '#E8E1D4',
-    secondaryForeground: '#26332F',
-
-    muted: '#ECE6DB',
-    mutedForeground: '#6F6A62',
-
-    accent: '#F4DFCD',
-    accentForeground: '#8A4A26',
-
-    destructive: '#B4483A',
-    destructiveForeground: '#FBF5EF',
-
-    border: '#E2DACB',
-    input: '#D9D0BF',
-
-    // Domain tokens
-    income: '#3B7A57',
-    incomeSoft: '#DCEADF',
-    expense: '#B5583E',
-    expenseSoft: '#F3DED5',
-    warning: '#B97A1E',
-    warningSoft: '#F5E6C9',
-    aura: '#E5946B',
-    auraSoft: '#F7E5D7',
-    lagoonSoft: '#D5E5E1',
-    hero: '#173F3D',
-    heroForeground: '#F4EEE4',
-    heroMuted: '#9DB7B1',
-    overlay: 'rgba(23,63,61,0.08)',
-  },
-  radius: 18,
+  light: dark,
+  dark,
+  radius: 16,
 };
 
 export default colors;

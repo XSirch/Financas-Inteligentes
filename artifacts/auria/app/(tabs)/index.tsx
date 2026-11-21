@@ -83,7 +83,7 @@ export default function Overview() {
           {fin.persistError ? <View style={{ marginTop: 12 }}><Notice tone="danger" title="Falha ao salvar" body={fin.persistError} /></View> : null}
 
           <FadeIn delay={60}>
-            <View style={[st.hero, { backgroundColor: c.hero, borderRadius: c.radius + 6 }]}>
+            <View style={[st.hero, { backgroundColor: c.hero, borderRadius: c.radius + 6, borderWidth: StyleSheet.hairlineWidth, borderColor: c.border }]}>
               <View style={[st.glow, { backgroundColor: c.aura }]} />
               <View style={st.heroTop}>
                 <View style={{ flex: 1 }}>

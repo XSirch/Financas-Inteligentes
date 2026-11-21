@@ -171,7 +171,7 @@ export default function Agent() {
               <Text style={[st.bubbleText, { color: c.mutedForeground }]}>Lendo e pensando…</Text>
             </View>
           </View>
-        ) : null}
+        ) : undefined}
         ListEmptyComponent={empty}
       />
       <View style={[st.composer, { borderTopColor: c.border, backgroundColor: c.background, paddingBottom: bottom - 24 }]}>

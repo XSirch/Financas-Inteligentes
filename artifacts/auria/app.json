@@ -6,11 +6,13 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "auria",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#10151D",
+    "splash": { "backgroundColor": "#10151D", "resizeMode": "contain", "image": "./assets/images/icon.png" },
     "ios": {
       "supportsTablet": false
     },
-    "android": {},
+    "android": { "userInterfaceStyle": "dark", "backgroundColor": "#10151D" },
     "web": {
       "favicon": "./assets/images/icon.png",
       "output": "static"

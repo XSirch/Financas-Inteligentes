@@ -17,7 +17,7 @@ export default function Planning() {
   const fin = useFinance();
   const ledger = useLedger();
   const bottom = useTabBottomPad();
-  const [tab, setTab] = useState<'budgets' | 'goals'>('budgets');
+  const [tab, setTab] = useState<'budgets' | 'goals' | 'subs'>('budgets');
   const summary = useMemo(() => summarize(ledger, fin.month), [ledger, fin.month]);
 
   const budgets = useMemo(
@@ -37,7 +37,7 @@ export default function Planning() {
         <ScreenHeader eyebrow="Plano" title="Para onde vai" />
         <View style={{ paddingHorizontal: 20, gap: 14 }}>
           <Segmented
-            options={[{ value: 'budgets', label: 'Orçamentos' }, { value: 'goals', label: 'Metas' }]}
+            options={[{ value: 'budgets', label: 'Orçamentos' }, { value: 'goals', label: 'Metas' }, { value: 'subs', label: 'Assinaturas' }]}
             value={tab}
             onChange={setTab}
           />
@@ -110,6 +110,8 @@ export default function Planning() {
                 </Card>
               ) : null}
             </>
+          ) : tab === 'subs' ? (
+            <Subscriptions />
           ) : fin.store.goals.length === 0 ? (
             <EmptyState
               icon="flag"
@@ -159,6 +161,50 @@ export default function Planning() {
         </View>
       </ScrollView>
     </View>
+  );
+}
+
+function Subscriptions() {
+  const c = useColors();
+  const { store } = useFinance();
+  const subs = [...store.subscriptions].sort((a, b) => Number(b.active) - Number(a.active) || a.billingDay - b.billingDay);
+  const total = subs.filter((x) => x.active).reduce((a, x) => a + x.amount, 0);
+  if (subs.length === 0) {
+    return (
+      <EmptyState
+        icon="repeat"
+        title="Nenhuma assinatura cadastrada"
+        body="Registre gastos recorrentes com valor e dia de cobrança. Ficam só neste aparelho; nada é cobrado ou detectado automaticamente."
+        actionLabel="Adicionar assinatura"
+        onAction={() => router.push('/subscription')}
+      />
+    );
+  }
+  return (
+    <>
+      <Card tone="lagoon">
+        <Text style={[st.kicker, { color: c.primary }]}>Recorrente por mês · ativas</Text>
+        <Money value={total} style={[st.big, { color: c.foreground }]} />
+        <Text style={[st.contrib, { color: c.mutedForeground }]}>Valores cadastrados manualmente. Não confirmam cobranças reais.</Text>
+      </Card>
+      {subs.map((x, i) => (
+        <FadeIn key={x.id} delay={i * 40}>
+          <PressableScale testID={`sub-${x.id}`} onPress={() => router.push({ pathname: '/subscription', params: { id: x.id } })} style={[st.item, { backgroundColor: c.card, borderColor: c.border, opacity: x.active ? 1 : 0.6 }]}>
+            <View style={st.itemHead}>
+              <View style={[st.icon, { backgroundColor: c.auraSoft }]}>
+                <Feather name="repeat" size={16} color={c.accentForeground} />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={[st.itemTitle, { color: c.foreground }]} numberOfLines={1}>{x.name}</Text>
+                <Text style={[st.contrib, { color: c.mutedForeground, marginTop: 2 }]}>Todo dia {x.billingDay}</Text>
+              </View>
+              {x.active ? <Money value={x.amount} style={[st.small, { color: c.expense }]} /> : <Badge label="Pausada" />}
+            </View>
+          </PressableScale>
+        </FadeIn>
+      ))}
+      <Button label="Nova assinatura" icon="plus" variant="secondary" onPress={() => router.push('/subscription')} />
+    </>
   );
 }
 

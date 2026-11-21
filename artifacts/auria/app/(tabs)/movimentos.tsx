@@ -153,7 +153,7 @@ export default function Movements() {
         ListFooterComponent={
           sections.length > 0 ? (
             <Text style={[st.hint, { color: c.mutedForeground }]}>Toque para editar. Segure um registro manual para excluir.</Text>
-          ) : null
+          ) : undefined
         }
       />
       <PressableScale
@@ -178,6 +178,6 @@ const st = StyleSheet.create({
   tVal: { fontSize: 15, marginTop: 3 },
   day: { fontFamily: F.semibold, fontSize: 12, letterSpacing: 0.8, textTransform: 'uppercase', paddingHorizontal: 20, marginTop: 18, marginBottom: 2 },
   hint: { fontFamily: F.regular, fontSize: 12, textAlign: 'center', marginTop: 20 },
-  fab: { position: 'absolute', right: 20, flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 20, height: 52, borderRadius: 26, shadowColor: '#173F3D', shadowOpacity: 0.25, shadowRadius: 14, shadowOffset: { width: 0, height: 6 }, elevation: 6 },
+  fab: { position: 'absolute', right: 20, flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 20, height: 52, borderRadius: 26, shadowColor: '#05080C', shadowOpacity: 0.25, shadowRadius: 14, shadowOffset: { width: 0, height: 6 }, elevation: 6 },
   fabText: { fontFamily: F.semibold, fontSize: 15 },
 });

@@ -172,10 +172,10 @@ export function Chip({ label, active, onPress, icon, testID }: { label: string; 
         onPress();
       }}
       scaleTo={0.94}
-      style={[s.chip, { backgroundColor: active ? c.hero : c.card, borderColor: active ? c.hero : c.border }]}
+      style={[s.chip, { backgroundColor: active ? c.primary : c.card, borderColor: active ? c.primary : c.border }]}
     >
-      {icon ? <Feather name={icon} size={13} color={active ? c.heroForeground : c.mutedForeground} /> : null}
-      <Text style={[s.chipText, { color: active ? c.heroForeground : c.foreground }]}>{label}</Text>
+      {icon ? <Feather name={icon} size={13} color={active ? c.primaryForeground : c.mutedForeground} /> : null}
+      <Text style={[s.chipText, { color: active ? c.primaryForeground : c.foreground }]}>{label}</Text>
     </PressableScale>
   );
 }
@@ -190,10 +190,10 @@ export function Segmented<T extends string>({ options, value, onChange }: { opti
   }, [idx, x]);
   const segW = w / options.length;
   return (
-    <View style={[s.seg, { backgroundColor: c.muted }]} onLayout={(e) => setW(e.nativeEvent.layout.width - 8)}>
+    <View style={[s.seg, { backgroundColor: c.muted, borderWidth: StyleSheet.hairlineWidth, borderColor: c.border }]} onLayout={(e) => setW(e.nativeEvent.layout.width - 8)}>
       {w > 0 ? (
         <Animated.View
-          style={[s.segThumb, { width: segW, backgroundColor: c.card, transform: [{ translateX: Animated.multiply(x, segW) }] }]}
+          style={[s.segThumb, { width: segW, backgroundColor: c.secondary, transform: [{ translateX: Animated.multiply(x, segW) }] }]}
         />
       ) : null}
       {options.map((o) => (
@@ -395,7 +395,7 @@ const s = StyleSheet.create({
   chip: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 13, height: 34, borderRadius: 17, borderWidth: 1 },
   chipText: { fontFamily: F.medium, fontSize: 13 },
   seg: { flexDirection: 'row', padding: 4, borderRadius: 14 },
-  segThumb: { position: 'absolute', top: 4, left: 4, bottom: 4, borderRadius: 10, shadowColor: '#173F3D', shadowOpacity: 0.08, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 1 },
+  segThumb: { position: 'absolute', top: 4, left: 4, bottom: 4, borderRadius: 10, shadowColor: '#05080C', shadowOpacity: 0.08, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 1 },
   segItem: { flex: 1, height: 36, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 },
   segText: { fontFamily: F.semibold, fontSize: 13 },
   empty: { alignItems: 'center', padding: 24, borderWidth: 1, borderStyle: 'dashed' },

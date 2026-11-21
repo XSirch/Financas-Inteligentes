@@ -24,7 +24,7 @@ SplashScreen.preventAutoHideAsync();
 const queryClient = new QueryClient();
 
 function RootLayoutNav() {
-  const c = colors.light;
+  const c = colors.dark;
   return (
     <Stack
       screenOptions={{
@@ -34,6 +34,7 @@ function RootLayoutNav() {
         headerTintColor: c.foreground,
         headerTitleStyle: { fontFamily: 'Inter_600SemiBold', fontSize: 17 },
         contentStyle: { backgroundColor: c.background },
+        navigationBarColor: c.background,
       }}
     >
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -43,6 +44,7 @@ function RootLayoutNav() {
       <Stack.Screen name="holding" options={{ title: 'Investimento', presentation: 'modal' }} />
       <Stack.Screen name="account" options={{ title: 'Conta ou cartão', presentation: 'modal' }} />
       <Stack.Screen name="settings" options={{ title: 'Ajustes e conexões' }} />
+      <Stack.Screen name="subscription" options={{ title: 'Assinatura', presentation: 'modal' }} />
       <Stack.Screen name="auth" options={{ title: 'Entrar', presentation: 'modal' }} />
     </Stack>
   );
@@ -73,7 +75,7 @@ export default function RootLayout() {
               <SessionGuard />
               <GestureHandlerRootView style={{ flex: 1 }}>
                 <KeyboardProvider>
-                  <StatusBar style="dark" />
+                  <StatusBar style="light" />
                   <RootLayoutNav />
                 </KeyboardProvider>
               </GestureHandlerRootView>
